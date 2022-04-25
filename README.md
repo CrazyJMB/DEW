@@ -1,2 +1,0 @@
-# DEW
-Servlet de dew
