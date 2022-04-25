@@ -1,0 +1,24 @@
+ Info 
+Request URL: http://localhost:8080/version1/log2
+Context Path: /version1
+Servlet Path: /log2
+Path Info: http://localhost:8080/version1/log2
+Query String: null
+
+ Protocolo HTTP 
+Metodo: GET
+Remote Addr: 0:0:0:0:0:0:0:1
+Remote Host: 0:0:0:0:0:0:0:1
+Remote Port: http://localhost:8080/version1/log2
+
+ Cabeceras HTTP: 
+host localhost:8080
+cache-control max-age=0
+accept text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+upgrade-insecure-requests 1
+user-agent Mozilla/5.0 (X11; Ubuntu; Linux x86_64) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/14.0 Safari/605.1.15
+accept-encoding gzip, deflate
+accept-language es-ES
+connection Keep-Alive
+
+ Parametros 
