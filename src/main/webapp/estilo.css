@@ -1,0 +1,66 @@
+.contenedor {
+    position: relative;
+}
+
+.centrado {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.texto {
+  margin-top: 25px;
+  margin-left: 300px;
+  text-align: center;
+  align-items: center;
+}
+
+.texto #id01 {
+  margin-top: 30px;
+}
+
+.grupo{
+    max-height: auto;
+    text-align: center;
+    margin-left: 50px;
+    margin-top: 110px;
+}
+
+.grupo #titulo {
+  color: white; 
+  background-color: brown; 
+  border: 2px black solid;
+}
+
+.grupo #listaGrupo {
+  border:2px lightgray solid;
+}
+
+.alumnos {
+  border: 3px black solid;
+  margin-bottom: 50px;
+  margin-top: 50px;
+  margin-left: 200px;
+  text-align: center;
+  align-items: center;
+  max-width: 300px;
+}
+
+.profesores {
+  border: 3px black solid;
+  margin-bottom: 50px;
+  margin-top: 50px;
+  margin-left: 200px;
+  text-align: center;
+  align-items: center;
+  max-width: 300px;
+}
+
+.inicioSesion {
+  display: none;
+  width: 550px;
+  height: 350px;
+  margin-top: 50px;
+  margin-left: 420px;
+}

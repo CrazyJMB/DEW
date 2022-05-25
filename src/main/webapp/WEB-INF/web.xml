@@ -1,46 +1,79 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/Javaee" xmlns:web="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" id="WebApp_ID" version="2.5">
-  <display-name>version1</display-name>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://JAVA.sun.com/xml/ns/javaee" xmlns:web="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" id="WebApp_ID" version="2.5">
+  <display-name>CentroEducativo</display-name>
   <welcome-file-list>
-    <welcome-file>index.html</welcome-file>
-    <welcome-file>index.htm</welcome-file>
-    <welcome-file>index.jsp</welcome-file>
-    <welcome-file>default.html</welcome-file>
-    <welcome-file>default.htm</welcome-file>
-    <welcome-file>default.jsp</welcome-file>
+    <welcome-file>paginaInicio.html</welcome-file>
   </welcome-file-list>
   <servlet>
     <description></description>
-    <display-name>log0</display-name>
-    <servlet-name>log0</servlet-name>
-    <servlet-class>log0</servlet-class>
+    <display-name>alumno</display-name>
+    <servlet-name>alumno</servlet-name>
+    <servlet-class>alumno</servlet-class>
   </servlet>
   <servlet-mapping>
-    <servlet-name>log0</servlet-name>
-    <url-pattern>/log0</url-pattern>
+    <servlet-name>alumno</servlet-name>
+    <url-pattern>/alumno</url-pattern>
   </servlet-mapping>
+  <security-constraint>
+    <web-resource-collection>
+      <web-resource-name>Alumno authentication</web-resource-name>
+      <url-pattern>/alumno</url-pattern>
+      <http-method>GET</http-method>
+      <http-method>POST</http-method>
+    </web-resource-collection>
+    <auth-constraint>
+      <role-name>rolalu</role-name>
+      <role-name>rolpro</role-name>
+    </auth-constraint>
+  </security-constraint>
+  <security-constraint>
+    <web-resource-collection>
+      <web-resource-name>Professor authentication</web-resource-name>
+      <url-pattern>/ListaAsignaturas.html</url-pattern>
+      <http-method>GET</http-method>
+      <http-method>POST</http-method>
+    </web-resource-collection>
+    <auth-constraint>
+      <role-name>rolalu</role-name>
+      <role-name>rolpro</role-name>
+    </auth-constraint>
+  </security-constraint>
+  <security-role>
+    <role-name>rolpro</role-name>
+  </security-role>
+  <security-role>
+    <role-name>rolalu</role-name>
+  </security-role>
+  <login-config>
+    <auth-method>FORM</auth-method>
+    <form-login-config>
+      <form-login-page>/login.html</form-login-page>
+      <form-error-page>/login-failed.html</form-error-page>
+    </form-login-config>
+  </login-config>
+  <filter>
+    <display-name>LoginFilter</display-name>
+    <filter-name>LoginFilter</filter-name>
+    <filter-class>LoginFilter</filter-class>
+  </filter>
+  <filter-mapping>
+    <filter-name>LoginFilter</filter-name>
+    <servlet-name>alumno</servlet-name>
+    <url-pattern>/ListaAsignaturas.html</url-pattern>
+  </filter-mapping>
+  <error-page>
+    <error-code>403</error-code>
+    <location>/login-failed.html</location>
+  </error-page>
+
   <servlet>
     <description></description>
-    <display-name>log1</display-name>
-    <servlet-name>log1</servlet-name>
-    <servlet-class>log1</servlet-class>
+    <display-name>notAuthorized</display-name>
+    <servlet-name>notAuthorized</servlet-name>
+    <servlet-class>notAuthorized</servlet-class>
   </servlet>
   <servlet-mapping>
-    <servlet-name>log1</servlet-name>
-    <url-pattern>/log1</url-pattern>
+    <servlet-name>notAuthorized</servlet-name>
+    <url-pattern>/notAuthorized</url-pattern>
   </servlet-mapping>
-  <servlet>
-    <description></description>
-    <display-name>log2</display-name>
-    <servlet-name>log2</servlet-name>
-    <servlet-class>log2</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>log2</servlet-name>
-    <url-pattern>/log2</url-pattern>
-  </servlet-mapping>
-  <context-param>
-	<param-name>rutaArchivo</param-name>
-	<param-value>./eclipse-workspace/version1/src/main/archivos/file1.txt</param-value>
-  </context-param>
 </web-app>
