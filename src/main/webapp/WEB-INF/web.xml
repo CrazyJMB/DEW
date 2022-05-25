@@ -65,7 +65,6 @@
     <error-code>403</error-code>
     <location>/login-failed.html</location>
   </error-page>
-
   <servlet>
     <description></description>
     <display-name>notAuthorized</display-name>
@@ -75,5 +74,25 @@
   <servlet-mapping>
     <servlet-name>notAuthorized</servlet-name>
     <url-pattern>/notAuthorized</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>detallesAlumno</display-name>
+    <servlet-name>detallesAlumno</servlet-name>
+    <servlet-class>detallesAlumno</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>detallesAlumno</servlet-name>
+    <url-pattern>/detallesAlumno/*</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>certificadoAlumno</display-name>
+    <servlet-name>certificadoAlumno</servlet-name>
+    <servlet-class>certificadoAlumno</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>certificadoAlumno</servlet-name>
+    <url-pattern>/certificadoAlumno</url-pattern>
   </servlet-mapping>
 </web-app>

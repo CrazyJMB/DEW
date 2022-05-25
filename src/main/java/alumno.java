@@ -124,7 +124,6 @@ public class alumno extends HttpServlet {
     		out.println("key" + session.getAttribute("key"));
     		out.println("<br>Something is wrong! Error code:" + responseCode);
         	out.println("</body></html>");
-        	//out.println(preface + "<h2>Usuario y password inválidos</h2></body></html>");
         }
         else {
         	try (BufferedReader in = new BufferedReader(
@@ -146,12 +145,24 @@ public class alumno extends HttpServlet {
 			jsonAsig = new JSONArray(answer.toString());
 
 			//we print the JSON objects
-			for(int i=0; i<jsonAsig.length(); i++)
-				out.println("<br><h2>" + jsonAsig.getJSONObject(i).getString("asignatura") + "</h2>");
+			for(int i=0; i<jsonAsig.length(); i++) {
+				String asig=jsonAsig.getJSONObject(i).getString("asignatura");
+				out.println("<br><h2><a href=\"detallesAlumno/"+ asig + "\">" + asig + "</a></h2>");
+				String nota=jsonAsig.getJSONObject(i).getString("nota");
+				if(nota=="")
+					nota="Sin calificacion";
+				out.println("<h3>Nota: " + nota + "</h3>");
+			}
 	
 		}catch (JSONException e) {
 				e.printStackTrace();
 		}
+		out.println("<br>Certificado pagina por impresion: ");
+		out.println("<form action='certificadoAlumno' method='GET'>" );
+		out.println("<input type='hidden' name='nombre' value='" + nombre + "'/>"); 
+		out.println("<input type='hidden' name='apellidos' value='" + apellidos + "'/>"); 
+		out.println("<input type='hidden' name='asigJson' value='" + answer + "'/>"); 
+		out.println("<br><input type='submit' value='Obtienes el certificado'/>" + "</form>");
 		out.println("</body></html>");
 		
 	}
