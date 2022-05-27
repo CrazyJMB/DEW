@@ -28,9 +28,23 @@ public class alumno extends HttpServlet {
         super();
     }
     
-    private static final String preface = "<!DOCTYPE html>\n<html lang=\"es-es\">\n" +
-   		 "<head><meta charset=\"utf-8\" />" +
-   		 "<title>PruebaPOST</title>\n</head>\n<body>\n";
+    private static final String preface = "<!DOCTYPE html>\n"
+    		+ "<html lang=\"es\">\n"
+    		+ "\n"
+    		+ "<head>\n"
+    		+ "    <title>Bienvenido</title>\n"
+    		+ "    <meta charset=\"utf-8\">\n"
+    		+ "    <meta grupo=\"DEW G4\">\n"
+    		+ "    <link rel=\"stylesheet\" href=\"estilo.css\">\n"
+    		+ "    <link rel=\"stylesheet\" href=\"https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css\"\n"
+    		+ "        integrity=\"sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2\" crossorigin=\"anonymous\">\n"
+    		+ "</head>\n"
+    		+ "<body>\n"
+    		+ "    <script src=\"https://code.jquery.com/jquery-3.5.1.min.js\"\n"
+    		+ "        integrity=\"sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=\" crossorigin=\"anonymous\"></script>\n"
+    		+ "    <img src=\"https://a-static.besthdwallpaper.com/chica-lofi-estudiando-papel-pintado-3200x900-81037_74.jpg\"\n"
+    		+ "        style=\"width: 100%; max-height: 190px;\" alt=\"chicaEstudiando\">\n"
+    		+ "    <div class=\"texto\" style=\"margin-left: 80px;\">";
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		response.setContentType("text/html");
@@ -99,7 +113,7 @@ public class alumno extends HttpServlet {
 		con.disconnect();
 		
 		out.println(preface);
-		out.println("<h2>Benvenuto " + nombre + " " + apellidos + "</h2>");
+		out.println("<h1><strong>Bienvenido <strong>" + nombre + " " + apellidos + "</strong></h1>");
 		
 		//second request for getting the subjects
 		RequestURL = "http://"+ request.getServerName() + ":9090/CentroEducativo/alumnos/" + dni + "/asignaturas?key=" + key;
@@ -139,6 +153,12 @@ public class alumno extends HttpServlet {
         	}
         }
         
+        out.println("<div class=\"container\">\n"
+        		+ "                <div class=\"jumbotron\">\n"
+        		+ "                  <h1>Estas son tus asignaturas matriculadas</h1>\n"
+        		+ "                  <p>¿Que notas deseas ver?</p>\n"
+        		+ "                  <div class=\"container-fluid\">");
+        
         //we save the subjects in an array of JSON objects
         JSONArray jsonAsig = null;
 		try {
@@ -147,23 +167,38 @@ public class alumno extends HttpServlet {
 			//we print the JSON objects
 			for(int i=0; i<jsonAsig.length(); i++) {
 				String asig=jsonAsig.getJSONObject(i).getString("asignatura");
-				out.println("<br><h2><a href=\"detallesAlumno/"+ asig + "\">" + asig + "</a></h2>");
+				out.println("<p><a href=\"detallesAlumno/"+ asig + "\" class=\"text-decoration-none\"\">" + asig + "</a></p>");
 				String nota=jsonAsig.getJSONObject(i).getString("nota");
 				if(nota=="")
 					nota="Sin calificacion";
-				out.println("<h3>Nota: " + nota + "</h3>");
+				out.println("<p>Nota: " + nota + "</p>");
 			}
-	
 		}catch (JSONException e) {
 				e.printStackTrace();
 		}
-		out.println("<br>Certificado pagina por impresion: ");
+		out.println("</div></div></div><div>");
 		out.println("<form action='certificadoAlumno' method='GET'>" );
 		out.println("<input type='hidden' name='nombre' value='" + nombre + "'/>"); 
 		out.println("<input type='hidden' name='apellidos' value='" + apellidos + "'/>"); 
 		out.println("<input type='hidden' name='asigJson' value='" + answer + "'/>"); 
-		out.println("<br><input type='submit' value='Obtienes el certificado'/>" + "</form>");
+		out.println("<button type=\"submit\" class=\"btn btn-primary\" style=\"background-color: brown;\">Imprimir certificado</button>" + "</form>");
 		out.println("</body></html>");
+		out.println("</div>\n"
+				+ "    </div>\n"
+				+ "    <div style=\"display: flex;\">\n"
+				+ "        <div class=\"grupo\">\n"
+				+ "            <h6 id=\"titulo\"><strong>Creado por el grupo G4</strong></h6>\n"
+				+ "            <ul class=\"list-group list-group-flush\" id=\"listaGrupo\">\n"
+				+ "                <li class=\"list-group-item\">David Sanfélix Enguídanos</li>\n"
+				+ "                <li class=\"list-group-item\">Jorge Martín Barreto</li>\n"
+				+ "                <li class=\"list-group-item\">Alejandro Duque Segura</li>\n"
+				+ "                <li class=\"list-group-item\">Vicent Ivorra Espasa</li>\n"
+				+ "                <li class=\"list-group-item\">Davide Romano</li>\n"
+				+ "            </ul>\n"
+				+ "        </div>\n"
+				+ "    </div>\n"
+				+ "    </div>\n"
+				+ "</body></html>");
 		
 	}
 	
