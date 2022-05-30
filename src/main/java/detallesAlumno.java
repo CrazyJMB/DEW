@@ -31,9 +31,28 @@ public class detallesAlumno extends HttpServlet {
         // TODO Auto-generated constructor stub
     }
 
-    private static final String preface = "<!DOCTYPE html>\n<html lang=\"es-es\">\n" +
-      		 "<head><meta charset=\"utf-8\" />" +
-      		 "<title>Detalles DEW</title>\n</head>\n<body>\n";
+    private static final String preface = "<!DOCTYPE html>\n"
+    		+ "<html lang=\"es\">\n"
+    		+ "\n"
+    		+ "<head>\n"
+    		+ "    <title>Notas</title>\n"
+    		+ "    <meta charset=\"utf-8\">\n"
+    		+ "    <meta grupo=\"DEW G4\">\n"
+    		+ "    <link rel=\"stylesheet\" href=\"estilo.css\">\n"
+    		+ "    <link rel=\"stylesheet\" href=\"https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css\"\n"
+    		+ "        integrity=\"sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2\" crossorigin=\"anonymous\">\n"
+    		+ "        <link rel=\"stylesheet\" href=\"https://use.fontawesome.com/releases/v5.7.0/css/all.css\" integrity=\"sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ\" crossorigin=\"anonymous\">\n"
+    		+ "\n"
+    		+ "    </head>\n"
+    		+ "\n"
+    		+ "<body>\n"
+    		+ "    <script src=\"https://code.jquery.com/jquery-3.5.1.min.js\"\n"
+    		+ "        integrity=\"sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=\" crossorigin=\"anonymous\"></script>\n"
+    		+ "    \n"
+    		+ "\n"
+    		+ "    <img src=\"https://a-static.besthdwallpaper.com/chica-lofi-estudiando-papel-pintado-3200x900-81037_74.jpg\"\n"
+    		+ "        style=\"width: 100%; max-height: 190px;\" alt=\"chicaEstudiando\">\n"
+    		+ "        <div class=\"container-fluid\" style=\"margin-left: 380px;\" >";
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		response.setContentType("text/html");
@@ -106,13 +125,41 @@ public class detallesAlumno extends HttpServlet {
 			e.printStackTrace();
 		}
 		
-		out.println("<h2>" + asig + " detalles</h2>");
-		out.println("<br><h3>Acronimo: " + acronimo + "</h3>");
-		out.println("<br><h3>Creditos: " + creditos + "</h3>");
-		out.println("<br><h3>Cuatrimestre: " + cuatrimestre + "</h3>");
-		out.println("<br><h3>Curso: " + curso + "</h3>");
-		out.println("<br><h3>nombre: " + nombre + "</h3>");
-		out.println("</body></html>");
+		out.println(preface);
+		out.println("<h1 class=\"display-3\" style=\"color: brown;\">" + acronimo +  " detalles</h1>");
+		out.println("<h3 class=\"font-weight-bolder\">Acronimo: <mark>" + acronimo + "</mark></h3>\n"
+				+ "            <h3 class=\"font-weight-bolder\">Creditos: <mark> " + creditos + "</mark></h3> \n"
+				+ "            <h3 class=\"font-weight-bolder\">Cuatrimestre: <mark>" + cuatrimestre + "</mark></h3>\n"
+				+ "            <h3 class=\"font-weight-bolder\">Curso: <mark>" + curso + "</mark></h3>\n"
+				+ "            <h3 class=\"font-weight-bolder\">Nombre: <mark>" + nombre + "</mark></h3>");
+		out.println("<div style=\"margin-right: 180px;\">\n"
+				+ "                <button type=\"submit\" class=\"btn btn-primary\" style=\"background-color: brown;\" >Volver</button>\n"
+				+ "            </div>          \n"
+				+ "          </div>\n"
+				+ "        \n"
+				+ "        \n"
+				+ "\n"
+				+ "    </div>\n"
+				+ "    <div style=\"display: flex;\">\n"
+				+ "        <div class=\"grupo\">\n"
+				+ "            <h6 id=\"titulo\"><strong>Creado por el grupo G4</strong></h6>\n"
+				+ "            <ul class=\"list-group list-group-flush\" id=\"listaGrupo\">\n"
+				+ "                <li class=\"list-group-item\">David Sanfélix Enguídanos</li>\n"
+				+ "                <li class=\"list-group-item\">Jorge Martín Barreto</li>\n"
+				+ "                <li class=\"list-group-item\">Alejandro Duque Segura</li>\n"
+				+ "                <li class=\"list-group-item\">Vicent Ivorra Espasa</li>\n"
+				+ "                <li class=\"list-group-item\">Davide Romano</li>\n"
+				+ "            </ul>\n"
+				+ "        </div>\n"
+				+ "\n"
+				+ "        \n"
+				+ "    </div>\n"
+				+ "            \n"
+				+ "    </div>\n"
+				+ "\n"
+				+ "</body>\n"
+				+ "\n"
+				+ "</html>");
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

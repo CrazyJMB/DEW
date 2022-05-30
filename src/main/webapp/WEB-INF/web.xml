@@ -29,7 +29,7 @@
   <security-constraint>
     <web-resource-collection>
       <web-resource-name>Professor authentication</web-resource-name>
-      <url-pattern>/ListaAsignaturas.html</url-pattern>
+      <url-pattern>/profesor</url-pattern>
       <http-method>GET</http-method>
       <http-method>POST</http-method>
     </web-resource-collection>
@@ -59,7 +59,7 @@
   <filter-mapping>
     <filter-name>LoginFilter</filter-name>
     <servlet-name>alumno</servlet-name>
-    <url-pattern>/ListaAsignaturas.html</url-pattern>
+    <servlet-name>profesor</servlet-name>
   </filter-mapping>
   <error-page>
     <error-code>403</error-code>
@@ -94,5 +94,46 @@
   <servlet-mapping>
     <servlet-name>certificadoAlumno</servlet-name>
     <url-pattern>/certificadoAlumno</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>profesor</display-name>
+    <servlet-name>profesor</servlet-name>
+    <servlet-class>profesor</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>profesor</servlet-name>
+    <url-pattern>/profesor</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>listaAlumnosAsignatura</display-name>
+    <servlet-name>listaAlumnosAsignatura</servlet-name>
+    <servlet-class>listaAlumnosAsignatura</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>listaAlumnosAsignatura</servlet-name>
+    <url-pattern>/listaAlumnosAsignatura/*</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>detallesProfesor</display-name>
+    <servlet-name>detallesProfesor</servlet-name>
+    <servlet-class>detallesProfesor</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>detallesProfesor</servlet-name>
+    <url-pattern>/detallesProfesor</url-pattern>
+    <url-pattern>/listaAlumnosAsignatura/detallesProfesor</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>logout</display-name>
+    <servlet-name>logout</servlet-name>
+    <servlet-class>logout</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>logout</servlet-name>
+    <url-pattern>/logout</url-pattern>
   </servlet-mapping>
 </web-app>

@@ -55,9 +55,6 @@ public class LoginFilter implements Filter {
 	 */
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
 		
-		usuarios.put("profesor", new User("23456733H","123456"));
-		usuarios.put("alumno", new User("12345678W","123456"));
-		
 		response.setContentType("text/html");
 		PrintWriter out = response.getWriter();
 		
@@ -158,7 +155,20 @@ public class LoginFilter implements Filter {
 	 * @see Filter#init(FilterConfig)
 	 */
 	public void init(FilterConfig fConfig) throws ServletException {
-		// TODO Auto-generated method stub
+		// Profesores
+		usuarios.put("rgarcia", new User("23456733H","123456"));
+		usuarios.put("pvalderas", new User("10293756L","123456"));
+		usuarios.put("malbert", new User("06374291A","123456"));
+		usuarios.put("jfons", new User("65748923M","123456"));
+		
+		
+		// Alumnos
+		usuarios.put("pgarcias", new User("12345678W","123456"));
+		usuarios.put("mfernandezg", new User("23456387R","123456"));
+		usuarios.put("mhernandezl", new User("34567891F","123456"));
+		usuarios.put("lbenitot", new User("93847525G","123456"));
+		usuarios.put("malonsop", new User("37264096W","123456"));
+		usuarios.put("bsoynuevoe", new User("33445566X","123456"));
 	}
 
 }

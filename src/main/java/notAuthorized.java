@@ -41,7 +41,7 @@ public class notAuthorized extends HttpServlet {
 		else {
 			out.println(preface);
         	out.println("<h1>You are not a student! </h1><br>");
-        	out.println("Go to professor page: <br><a href=\"ListaAsignaturas.html\">Here</a>");
+        	out.println("Go to professor page: <br><a href=\"profesor\">Here</a>");
         	out.println("<body></html>");
 		}
 		
